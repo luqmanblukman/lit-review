@@ -1,5 +1,5 @@
 ---
-description: Day 14 / Day 30 sprint review — deck check, reviewer #2 critique, rebuttal
+description: "Day 14 / Day 30 sprint review — deck check, reviewer #2 critique, rebuttal"
 argument-hint: 1 | 2
 ---
 Hat: **supervisor (reviewer #2)**.
