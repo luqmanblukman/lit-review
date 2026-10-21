@@ -1,0 +1,23 @@
+name: Rebuild blog
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger luqthebatman.github.io rebuild
+        env:
+          TOKEN: ${{ secrets.BLOG_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::warning::BLOG_DISPATCH_TOKEN not set; skipping blog rebuild"
+            exit 0
+          fi
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/luqthebatman/luqthebatman.github.io/dispatches \
+            -d '{"event_type":"lit-review-updated"}'
